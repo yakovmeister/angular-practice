@@ -1,7 +1,10 @@
 
-<app-lists
-  [items]="state.data"
-  [dataState]="state.data_state"
-  *ngIf="state.data"
->
-</app-lists>
+<div class="app-index">
+  <app-expanding-card 
+    *ngFor="let item of state.data"
+    [title]="item.title"
+    [content]="item.body"
+    [id]="item.id"
+  >
+  </app-expanding-card>
+</div>

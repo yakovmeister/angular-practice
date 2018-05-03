@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { UserEffects } from './effects/user.effects';
+import { UserEffects } from './effects/user/user.effects';
+import { PostEffects } from './effects/post/post.effects';
 import { AppComponent } from './containers/app/app.component';
 import { HttpClientModule } from '@angular/common/http'
 
@@ -14,14 +15,17 @@ import { environment } from '../environments/environment.prod';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     BootModule,
-    EffectsModule.forRoot([UserEffects]),
+    EffectsModule.forRoot([
+      UserEffects, 
+      PostEffects
+    ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production

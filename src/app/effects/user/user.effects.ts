@@ -2,10 +2,9 @@ import { Injectable, Inject } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { exhaustMap, takeUntil, tap, switchMap, map } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 import { Action } from '@ngrx/store';
-import { mergeMap } from 'rxjs/operator/mergeMap';
-import { UsersActionTypes, UsersLoaded } from '../actions/users.actions';
+import { UsersActionTypes, UsersLoaded } from '../../actions/users.actions';
 
 
 @Injectable()

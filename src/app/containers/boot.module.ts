@@ -2,15 +2,26 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { UsersService } from '../services/users.service';
+import { PostsService } from '../services/posts';
 import { IndexComponent } from './index/index.component';
 import { ComponentModule } from '../components'
-import { MaterialModule } from '../material'
+import { MaterialModule } from '../material';
+import { ViewPostComponent } from './view-post/view-post.component'
 
 const COMPONENTS = [
-  IndexComponent
+  IndexComponent,
+  ViewPostComponent
 ]
 
 const routes: Routes = [
+  {
+    path: 'posts/:id',
+    component: ViewPostComponent
+  },
+  {
+    path: 'posts',
+    component: IndexComponent
+  },
   {
     path: 'index',
     component: IndexComponent
@@ -35,10 +46,11 @@ const routes: Routes = [
     ComponentModule
   ],
   providers: [
-    { provide: 'users', useClass: UsersService }
+    { provide: 'users', useClass: UsersService },
+    { provide: 'posts', useClass: PostsService }
   ],
   declarations: [
-    ...COMPONENTS
+    ...COMPONENTS,
   ]
 })
 export class BootModule { }

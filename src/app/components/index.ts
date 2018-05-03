@@ -1,19 +1,25 @@
 import { NgModule } from '@angular/core'
 import { ListsComponent } from './lists/lists.component';
+import { RouterModule } from '@angular/router'
+import { ExpandingCardComponent } from './expanding-card/expanding-card.component';
 import { MaterialModule } from '../material'
 import { CommonModule } from '@angular/common'
+import { EllipsisPipe } from '../pipes/ellipsis.pipe'
 
 @NgModule({
   imports: [
     MaterialModule,
-    CommonModule,
-    
+    RouterModule,
+    CommonModule
   ],
   declarations: [
-    ListsComponent
+    EllipsisPipe,
+    ListsComponent,
+    ExpandingCardComponent
   ],
   exports: [
-    ListsComponent
+    ListsComponent,
+    ExpandingCardComponent
   ]
 })
 export class ComponentModule { }

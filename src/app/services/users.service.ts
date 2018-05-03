@@ -11,7 +11,7 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   getUsers(filters?: Filter) {
-    return this.http.get('https://reqres.in/api/users')
+    return this.http.get('https://reqres.in/api/users?per_page=10')
   }
 
 }

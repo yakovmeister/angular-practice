@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import * as UserActions from '../../actions/users.actions'
+import * as PostActions from '../../actions/posts.actions'
 
 @Component({
   selector: 'app-index',
@@ -9,19 +9,25 @@ import * as UserActions from '../../actions/users.actions'
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
-  state: {
+  state = {
+    data: []
   };
 
-  constructor(private store: Store<any>) {
-    store.select('users').subscribe(data => this.state = data)
-  }
+  constructor(private store: Store<any>) { }
 
   ngOnInit() {
-    this.getUsers()
+    this.store
+      .select('posts')
+      .subscribe(data => this.state = data)
+    
+    this.GetPosts()
   }
 
-  getUsers() {
-    this.store.dispatch(new UserActions.GetUsers())
+  GetPosts() {
+    this.store.dispatch(new PostActions.GetPosts())
   }
 
+  handleEdit(e, id) {
+    
+  }
 }

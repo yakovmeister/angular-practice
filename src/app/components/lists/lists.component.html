@@ -1,0 +1,15 @@
+<div *ngIf="dataState === 'loading'; else load">
+  Loading...
+</div>
+<ng-template #load>
+  <div *ngFor="let item of items">
+    <mat-card [id]="item.id">
+      <mat-card-title>
+        {{ item.first_name }} {{ item.last_name }}
+      </mat-card-title>
+      <mat-card-content>
+        <img [src]="item.avatar">
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-template>

@@ -26,8 +26,4 @@ export class IndexComponent implements OnInit {
   GetPosts() {
     this.store.dispatch(new PostActions.GetPosts())
   }
-
-  handleEdit(e, id) {
-    
-  }
 }

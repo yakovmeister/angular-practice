@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import * as PostActions from '../../actions/posts.actions'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as NotesActions from '../../actions/notes.actions'
+
 
 @Component({
   selector: 'app-view-post',
@@ -10,21 +11,49 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./view-post.component.scss']
 })
 export class ViewPostComponent implements OnInit {
-  state = {};
+  state = {
+    id: '',
+    title: '',
+    content: ''
+  };
 
-  constructor(private store: Store<any>, private route: ActivatedRoute) {
-    this.store.dispatch(new PostActions.ClearSelected())
+  constructor(
+    private store: Store<any>, 
+    private route: ActivatedRoute,
+    private router: Router,
+    @Inject('notes') private noteProvider) {
+    this.store.dispatch(new NotesActions.ClearSelected())
   }
 
   ngOnInit() {
     this.store
-      .select('posts')
+      .select('notes')
       .subscribe(data => this.state = data.selected)
     
-    this.GetPost(this.route.snapshot.params.id)
+    this.GetNote(this.route.snapshot.params.id)
   }
 
-  GetPost(id: number) {
-    this.store.dispatch(new PostActions.SelectPost(id))
+  GetNote(id: number) {
+    this.store.dispatch(
+      new NotesActions.SelectNote(this.noteProvider.showNote(id))
+    )
+  }
+
+  handleEdit = (e, data) => {
+    this.store.dispatch(
+      new NotesActions.PutNote(this.noteProvider.updateNote(data))
+    )
+
+    this.router.navigate([''])
+  }
+
+  handleDelete = (e) => {
+    this.store.dispatch(
+      new NotesActions.SelectNote(this.noteProvider.deleteNote(this.state.id))
+    )
+  }
+
+  back() {
+    this.router.navigate([''])
   }
 }

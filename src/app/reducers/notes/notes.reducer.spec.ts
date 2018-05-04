@@ -1,6 +1,6 @@
-import { reducer, initialState } from './posts.reducer';
+import { reducer, initialState } from './notes.reducer';
 
-describe('Posts Reducer', () => {
+describe('Notes Reducer', () => {
   describe('unknown action', () => {
     it('should return the initial state', () => {
       const action = {} as any;

@@ -2,21 +2,21 @@ import { TestBed, inject } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs/Observable';
 
-import { PostEffects } from './post.effects';
+import { NoteEffects } from './note.effects';
 
 describe('PostService', () => {
   let actions$: Observable<any>;
-  let effects: PostEffects;
+  let effects: NoteEffects;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        PostEffects,
+        NoteEffects,
         provideMockActions(() => actions$)
       ]
     });
 
-    effects = TestBed.get(PostEffects);
+    effects = TestBed.get(NoteEffects);
   });
 
   it('should be created', () => {

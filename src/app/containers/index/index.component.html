@@ -1,10 +1,20 @@
-
-<div class="app-index">
-  <app-expanding-card 
-    *ngFor="let item of state.data"
-    [title]="item.title"
-    [content]="item.body"
-    [id]="item.id"
-  >
-  </app-expanding-card>
+<div class="app-index-container">
+  <div class="app-note-container">
+    <div>
+      <app-note
+        [id]="item.id"
+        [title]="item.title"
+        [content]="item.content"
+        width="300px"
+        height="100px"
+        *ngFor="let item of state.data"
+      >
+      </app-note>
+    </div>
+  </div>
+</div>
+<div class="action-buttons">
+  <button mat-mini-fab color="accent" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>

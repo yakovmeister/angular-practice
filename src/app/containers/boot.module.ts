@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { UsersService } from '../services/users.service';
-import { PostsService } from '../services/posts';
+import { NotesService } from '../services/notes';
 import { IndexComponent } from './index/index.component';
 import { ComponentModule } from '../components'
 import { MaterialModule } from '../material';
 import { ViewPostComponent } from './view-post/view-post.component'
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 
 const COMPONENTS = [
   IndexComponent,
@@ -15,11 +15,11 @@ const COMPONENTS = [
 
 const routes: Routes = [
   {
-    path: 'posts/:id',
+    path: 'notes/:id',
     component: ViewPostComponent
   },
   {
-    path: 'posts',
+    path: 'notes',
     component: IndexComponent
   },
   {
@@ -46,8 +46,8 @@ const routes: Routes = [
     ComponentModule
   ],
   providers: [
-    { provide: 'users', useClass: UsersService },
-    { provide: 'posts', useClass: PostsService }
+    { provide: 'notes', useClass: NotesService },
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}
   ],
   declarations: [
     ...COMPONENTS,

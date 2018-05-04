@@ -4,18 +4,16 @@ import { NgModule } from '@angular/core';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { UserEffects } from './effects/user/user.effects';
-import { PostEffects } from './effects/post/post.effects';
+import { NoteEffects } from './effects/note/note.effects';
 import { AppComponent } from './containers/app/app.component';
 import { HttpClientModule } from '@angular/common/http'
 
 import { BootModule } from './containers/boot.module'
 import { reducers } from './reducers'
 import { environment } from '../environments/environment.prod';
-
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -23,8 +21,7 @@ import { environment } from '../environments/environment.prod';
     HttpClientModule,
     BootModule,
     EffectsModule.forRoot([
-      UserEffects, 
-      PostEffects
+      // NoteEffects
     ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

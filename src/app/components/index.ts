@@ -1,10 +1,15 @@
-import { NgModule } from '@angular/core'
-import { ListsComponent } from './lists/lists.component';
-import { RouterModule } from '@angular/router'
-import { ExpandingCardComponent } from './expanding-card/expanding-card.component';
-import { MaterialModule } from '../material'
-import { CommonModule } from '@angular/common'
-import { EllipsisPipe } from '../pipes/ellipsis.pipe'
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { NoteComponent } from './note/note.component';
+import { MaterialModule } from '../material';
+import { CommonModule } from '@angular/common';
+import { EllipsisPipe } from '../pipes/ellipsis.pipe';
+import { CreateNoteComponent } from './create-note/create-note.component';
+
+const COMPONENTS = [
+  NoteComponent,
+  CreateNoteComponent
+]
 
 @NgModule({
   imports: [
@@ -14,12 +19,11 @@ import { EllipsisPipe } from '../pipes/ellipsis.pipe'
   ],
   declarations: [
     EllipsisPipe,
-    ListsComponent,
-    ExpandingCardComponent
+    ...COMPONENTS
   ],
+  entryComponents: [CreateNoteComponent],
   exports: [
-    ListsComponent,
-    ExpandingCardComponent
+    ...COMPONENTS
   ]
 })
 export class ComponentModule { }

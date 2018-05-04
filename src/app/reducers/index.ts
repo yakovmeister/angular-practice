@@ -1,14 +1,11 @@
 import { ActionReducerMap } from '@ngrx/store'
 
-import * as users from './users'
-import * as posts from './posts'
+import * as notes from './notes'
 
 export interface State {
-  users: users.State,
-  posts: posts.State
+  notes: notes.State
 }
 
 export const reducers : ActionReducerMap<State> = {
-  users: users.reducer,
-  posts: posts.reducer
+  notes: notes.reducer
 }

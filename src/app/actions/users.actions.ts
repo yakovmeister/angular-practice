@@ -1,3 +1,6 @@
+/**
+ * currently not used.
+ */
 import { Action } from '@ngrx/store';
 
 export enum UsersActionTypes {

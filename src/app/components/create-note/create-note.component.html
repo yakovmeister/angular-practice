@@ -1,0 +1,27 @@
+<mat-dialog-content>
+  <form>
+    <mat-form-field>
+      <input 
+        matInput
+        #title
+        type="text"
+        placeholder="Title"
+        (keyup)="changeFieldValue('title', title.value)"
+        [value]="state.title">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        #content
+        placeholder="Content"
+        [value]="state.content"
+        (keyup)="changeFieldValue('content', content.value)"
+      >
+      </textarea>  
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="saveAction()">Save</button>
+  <button mat-button [mat-dialog-close]="state">Close</button>
+</mat-dialog-actions>

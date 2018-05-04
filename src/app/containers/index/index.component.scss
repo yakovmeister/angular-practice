@@ -1,6 +1,22 @@
 
-.app-index {
+.app-index-container {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.app-note-container {
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-buttons {
+  position: absolute;
+  bottom: 3em;
+  right: 8em;
 }

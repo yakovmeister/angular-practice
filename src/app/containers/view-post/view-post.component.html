@@ -1,10 +1,19 @@
-<app-expanding-card
-  [title]="state.title"
-  [content]="state.body"
-  *ngIf="state"
-  width="100"
-  height="100"
-  titleEllipsis
-  contentEllipsis
->
-</app-expanding-card>
+<div class="view-container">
+  <app-note
+    [id]="state.id"
+    [title]="state.title"
+    [content]="state.content"
+    [handleEdit]="handleEdit"
+    [handleDelete]="handleDelete"
+    editMode=true
+    width="500px"
+    showEditButton="true"
+    showDeleteButton="true"
+  >
+  </app-note>
+</div>
+<div class="action-buttons">
+  <button mat-mini-fab color="accent" (click)="back()">
+    <mat-icon>keyboard_backspace</mat-icon>
+  </button>
+</div>
